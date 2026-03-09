@@ -5,6 +5,26 @@
   "windows": ["main"],
   "permissions": [
     "core:default",
-    "opener:default"
+    "opener:default",
+    "fs:default",
+    "fs:allow-read-text-file",
+    "fs:allow-write-text-file",
+    "fs:allow-exists",
+    "fs:allow-mkdir",
+    "dialog:default",
+    "dialog:allow-open",
+    "dialog:allow-save",
+    "dialog:allow-ask",
+    "dialog:allow-confirm",
+    "store:allow-get",
+    "store:allow-set",
+    "store:allow-delete",
+    "store:allow-clear",
+    "store:allow-reload",
+    "store:allow-save",
+    "store:allow-keys",
+    "store:allow-entries",
+    "store:allow-length",
+    "store:allow-has"
   ]
 }
