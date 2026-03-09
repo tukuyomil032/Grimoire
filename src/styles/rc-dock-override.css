@@ -1,0 +1,72 @@
+/* rc-dock dark theme overrides for Grimoire */
+
+.dock-layout {
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.dock-layout .dock-panel {
+  background: #12121a;
+  border-color: #2d2d4a;
+}
+
+.dock-layout .dock-tab {
+  background: #12121a;
+  color: #9ca3af;
+  border-color: #2d2d4a;
+  font-size: 12px;
+  padding: 4px 12px;
+}
+
+.dock-layout .dock-tab:hover {
+  background: #1a1a2e;
+  color: #f1f1f6;
+}
+
+.dock-layout .dock-tab-active,
+.dock-layout .dock-tab-active:hover {
+  background: #1a1a2e;
+  color: #f1f1f6;
+  border-bottom-color: #8b5cf6;
+}
+
+.dock-layout .dock-tab-close-btn {
+  color: #6b7280;
+}
+
+.dock-layout .dock-tab-close-btn:hover {
+  color: #f1f1f6;
+}
+
+.dock-layout .dock-bar {
+  background: #12121a;
+  border-color: #2d2d4a;
+}
+
+.dock-layout .dock-divider {
+  background: #2d2d4a;
+}
+
+.dock-layout .dock-nav-wrap {
+  background: #12121a;
+}
+
+.dock-layout .dock-panel .dock-content {
+  background: #0a0a0f;
+}
+
+.dock-layout .dock-drop-indicator {
+  background: rgba(139, 92, 246, 0.15);
+  border: 1px solid rgba(139, 92, 246, 0.5);
+}
+
+/* Float panel overrides */
+.dock-layout .dock-float-container .dock-panel {
+  border: 1px solid #2d2d4a;
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.dock-layout .dock-float-container .dock-panel .dock-bar {
+  border-radius: 8px 8px 0 0;
+}

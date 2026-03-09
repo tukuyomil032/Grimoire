@@ -1,13 +1,27 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tauri + React + Typescript</title>
+    <title>Grimoire - MythicMobs Visual Editor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
   </head>
 
-  <body>
-    <div id="root"></div>
+  <body style="background-color: #0a0a0f; color: #f1f1f6; margin: 0; padding: 0; overflow: hidden;">
+    <div id="root">
+      <!-- Loading placeholder - will be replaced by React -->
+      <div style="color: #10b981; padding: 20px; text-align: center; font-family: monospace; font-size: 12px;">
+        <div>Initializing Grimoire...</div>
+        <div style="margin-top: 10px; font-size: 11px; color: #f1f1f6;">
+          Check browser console for errors
+        </div>
+      </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

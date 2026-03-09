@@ -1,50 +1,83 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import { invoke } from '@tauri-apps/api/core';
-import './App.css';
+import { Suspense } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
+import { ErrorBoundary } from '@/components/common/ErrorBoundary';
+import { NotificationToast } from '@/components/common/NotificationToast';
+import { AppLayout } from '@/components/layout/AppLayout';
+import { WelcomePage } from '@/pages/WelcomePage';
+import { AnimatedPage } from '@/components/common/AnimatedPage';
+import { PanelPage } from '@/pages/PanelPage';
+import { SkillEditorPage } from '@/pages/SkillEditorPage';
+import { MobEditorPage } from '@/pages/MobEditorPage';
+import { ItemEditorPage } from '@/pages/ItemEditorPage';
 
-function App() {
-  const [greetMsg, setGreetMsg] = useState('');
-  const [name, setName] = useState('');
+function AnimatedRoutes() {
+  const location = useLocation();
 
-  async function greet() {
-    // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
-    setGreetMsg(await invoke('greet', { name }));
+  if (location.pathname.startsWith('/panel/')) {
+    return (
+      <Routes location={location} key="panel">
+        <Route path="/panel/:panelId" element={<PanelPage />} />
+      </Routes>
+    );
   }
 
   return (
-    <main className="container">
-      <h1>Welcome to Tauri + React</h1>
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname.split('/')[1] || 'home'}>
+        <Route element={<AppLayout />}>
+          <Route
+            path="/"
+            element={
+              <AnimatedPage>
+                <WelcomePage />
+              </AnimatedPage>
+            }
+          />
+          <Route
+            path="/skill/:id"
+            element={
+              <AnimatedPage>
+                <SkillEditorPage />
+              </AnimatedPage>
+            }
+          />
+          <Route
+            path="/mob/:id"
+            element={
+              <AnimatedPage>
+                <MobEditorPage />
+              </AnimatedPage>
+            }
+          />
+          <Route
+            path="/item/:id"
+            element={
+              <AnimatedPage>
+                <ItemEditorPage />
+              </AnimatedPage>
+            }
+          />
+        </Route>
+      </Routes>
+    </AnimatePresence>
+  );
+}
 
-      <div className="row">
-        <a href="https://vite.dev" target="_blank">
-          <img src="/vite.svg" className="logo vite" alt="Vite logo" />
-        </a>
-        <a href="https://tauri.app" target="_blank">
-          <img src="/tauri.svg" className="logo tauri" alt="Tauri logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <p>Click on the Tauri, Vite, and React logos to learn more.</p>
-
-      <form
-        className="row"
-        onSubmit={(e) => {
-          e.preventDefault();
-          greet();
-        }}
+function App() {
+  return (
+    <ErrorBoundary fallbackMessage="Grimoire encountered an error">
+      <Suspense
+        fallback={
+          <div className="flex h-screen items-center justify-center bg-[#050505] text-white">
+            Loading Grimoire...
+          </div>
+        }
       >
-        <input
-          id="greet-input"
-          onChange={(e) => setName(e.currentTarget.value)}
-          placeholder="Enter a name..."
-        />
-        <button type="submit">Greet</button>
-      </form>
-      <p>{greetMsg}</p>
-    </main>
+        <AnimatedRoutes />
+      </Suspense>
+      <NotificationToast />
+    </ErrorBoundary>
   );
 }
 

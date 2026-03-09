@@ -1,0 +1,139 @@
+@import 'tailwindcss';
+
+:root {
+  /* Base colors */
+  --color-background: #0a0a0f;
+  --color-foreground: #f1f1f6;
+  --color-surface-1: #12121a;
+  --color-surface-2: #1a1a2e;
+  --color-surface-3: #252540;
+  --color-border: #2d2d4a;
+
+  /* Accent colors */
+  --color-accent-primary: #8b5cf6;
+  --color-accent-primary-hover: #7c3aed;
+  --color-accent-secondary: #06b6d4;
+
+  /* Status colors */
+  --color-error: #ef4444;
+  --color-warning: #f59e0b;
+  --color-success: #10b981;
+
+  /* Block type colors (for Blockly & node editor) */
+  --color-block-trigger: #e53e3e;
+  --color-block-mechanic: #8b5cf6;
+  --color-block-condition: #f6ad55;
+  --color-block-targeter: #06b6d4;
+  --color-block-meta: #48bb78;
+  --color-block-variable: #9f7aea;
+
+  /* Typography */
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-surface-1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-surface-3);
+}
+
+/* Selection color */
+::selection {
+  background-color: rgba(124, 58, 237, 0.3);
+}
+
+/* Reusable input field */
+.input-field {
+  width: 100%;
+  border-radius: 0.375rem;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface-2);
+  padding: 0.375rem 0.625rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  color: var(--color-foreground);
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+.input-field:focus {
+  border-color: var(--color-accent-primary);
+}
+.input-field::placeholder {
+  color: color-mix(in srgb, var(--color-foreground) 30%, transparent);
+}
+
+/* Select field */
+.select-field {
+  width: 100%;
+  border-radius: 0.375rem;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface-2);
+  padding: 0.375rem 0.625rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  color: var(--color-foreground);
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+.select-field:focus {
+  border-color: var(--color-accent-primary);
+}
+
+/* Notification slide-in animation */
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.animate-slide-in-right {
+  animation: slideInRight 0.25s ease-out;
+}
+
+/* Scrollbar thin variant */
+.scrollbar-thin::-webkit-scrollbar {
+  width: 4px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  border-radius: 2px;
+}

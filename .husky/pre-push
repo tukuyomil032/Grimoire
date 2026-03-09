@@ -1,1 +1,1 @@
-pnpm run lint && pnpm run format:check
+bun run lint && bun run format:check
